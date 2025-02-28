@@ -8,6 +8,13 @@ export const emailExists = async (email = "") => {
     }
 }
 
+export const roleBlock = (value) => {
+    if (value) {
+        throw new Error("No puedes ingresar el role ya que se asigna por default");
+        
+    }
+}
+
 export const userExists = async (uid = " ") => {
     const existe = await User.findById(uid)
     if(!existe){

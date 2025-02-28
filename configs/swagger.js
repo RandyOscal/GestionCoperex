@@ -7,7 +7,7 @@ const swaggerOptions = {
         info:{
             title: "API Gestion Coperex",
             version:"1.0.0",
-            description: "API para gestionar la incorporacion de nuevos socios y empresas a su famosa feria \"Interfer\".",
+            description: "API para gestionar la incorporacion de nuevos socios y empresas a su famosa feria Interfer.",
             contact:{
                 name: "Randy Oscal",
                 email: "roscal-2023279@kinal.edu.gt"

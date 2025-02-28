@@ -1,21 +1,37 @@
 import { hash, verify } from "argon2";
 import User from "../user/user.model.js";
-import { generateJWT } from "../helpers/generate-jwt.js"
+import { generateJWT } from "../helpers/generate-jwt.js";
 
+/**
+ * @swagger
+ * /gestionOpinion/v1/auth/register:
+ *   post:
+ *     summary: Register a new user
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: User has been created
+ *       500:
+ *         description: User registration failed
+ */
 export const register = async (req, res) => {
     try {
         const data = req.body;
-        let profilePicture = req.file ? req.file.filename : null;
         const encryptedPassword = await hash(data.password);
         data.password = encryptedPassword;
-        data.profilePicture = profilePicture;
-
-        if (data.role && data.role === 'ADMIN_ROLE') {
-            return res.status(400).json({
-                success: false,
-                message: "No pudes asignarte como un administrador."
-            });
-        }
 
         const user = await User.create(data);
 
@@ -32,11 +48,36 @@ export const register = async (req, res) => {
     }
 };
 
+/**
+ * @swagger
+ * /gestionOpinion/v1/auth/login:
+ *   post:
+ *     summary: Login a user
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Login successful
+ *       400:
+ *         description: Invalid credentials
+ *       500:
+ *         description: Login failed, server error
+ */
 export const login = async (req, res) => {
-    const { email, username, password } = req.body;
+    const { email, password } = req.body;
     try {
         const user = await User.findOne({
-            $or: [{ email: email }, { username: username }]
+            $or: [{ email: email }]
         });
 
         if (!user) {
@@ -60,7 +101,6 @@ export const login = async (req, res) => {
             message: "Login successful",
             userDetails: {
                 token: token,
-                profilePicture: user.profilePicture
             }
         });
     } catch (err) {
