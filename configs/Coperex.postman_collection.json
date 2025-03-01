@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "c1d3f015-0d4e-4e3d-a7ab-0fceae928bc0",
+		"name": "Coperex",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "41971060"
+	},
+	"item": [
+		{
+			"name": "Companies",
+			"item": [
+				{
+					"name": "Register Companies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "Se requiere el token de un ADMIN"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"FreshMarket\",\r\n    \"email\": \"support@freshmarket.com\",\r\n    \"phone\": \"555-4005\",\r\n    \"category\": \"Alimentación\",\r\n    \"impactLevel\": \"BAJO\",\r\n    \"yearsOfExperience\": \"2\",\r\n    \"status\": true\r\n  }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/gestionCoperex/v1/companie/registerCompanies"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Companie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "Se requiere token de un ADMIN"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Tech Innovators 2.0\",\r\n    \"phone\": \"51234568\",\r\n    \"impactLevel\": \"MEDIO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/gestionCoperex/v1/companie/updateCompanies/67c24c72af4ca8b45f1b7e46"
+					},
+					"response": []
+				},
+				{
+					"name": "Generar reporte excel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "Se requiere token de un ADMIN"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://127.0.0.1:3000/gestionCoperex/v1/companie/reportCompanies"
+					},
+					"response": []
+				},
+				{
+					"name": "FiltersCompanies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2MyOTIyZDgxNWNhNDdkYjMwZjcyNWQiLCJpYXQiOjE3NDA4MDQ2NjMsImV4cCI6MTc0MDgwODI2M30.ZsRq8iNZ3lAlCH92OxBV8594wywAVGn0ke76BTq7yp0"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "filter",
+									"value": "category",
+									"type": "text"
+								},
+								{
+									"key": "value",
+									"value": "Tecnología",
+									"type": "text"
+								},
+								{
+									"key": "order",
+									"value": "asc",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://127.0.0.1:3000/gestionCoperex/v1/companie/listCompanies"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admins",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"cgomez123@gmail.com\",\r\n    \"password\": \"123Cgomez@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/gestionCoperex/v1/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "Se requiere token de un ADMIN"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Juan\",\r\n    \"surname\": \"Pérz\",\r\n    \"email\": \"Sdidk.perez@example.com\",\r\n    \"password\": \"1234Hol@2\",\r\n    \"phone\": \"59876543\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:3000/gestionCoperex/v1/auth/register"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
