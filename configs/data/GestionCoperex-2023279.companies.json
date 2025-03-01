@@ -1,0 +1,96 @@
+[{
+  "_id": {
+    "$oid": "67c29252815ca47db30f7262"
+  },
+  "name": "TechCorp",
+  "email": "techcorp@example.com",
+  "phone": "+1234567890",
+  "category": "Tecnología",
+  "impactLevel": "ALTO",
+  "yearsOfExperience": 5,
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c2925b815ca47db30f7266"
+  },
+  "name": "GreenSolutions",
+  "email": "greensolutions@example.com",
+  "phone": "+0987654321",
+  "category": "Energía Renovable",
+  "impactLevel": "MEDIO",
+  "yearsOfExperience": 8,
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c29260815ca47db30f726a"
+  },
+  "name": "EduTech",
+  "email": "edutech@example.com",
+  "phone": "+1122334455",
+  "category": "Educación",
+  "impactLevel": "BAJO",
+  "yearsOfExperience": 2,
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c29268815ca47db30f726e"
+  },
+  "name": "MedHealth",
+  "email": "medhealth@example.com",
+  "phone": "+5566778899",
+  "category": "Salud",
+  "impactLevel": "ALTO",
+  "yearsOfExperience": 10,
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c2926f815ca47db30f7272"
+  },
+  "name": "InnovativeTech",
+  "email": "innovativetech@example.com",
+  "phone": "+1234567891",
+  "category": "Tecnología",
+  "impactLevel": "MEDIO",
+  "yearsOfExperience": 3,
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c29273815ca47db30f7276"
+  },
+  "name": "SolarWave",
+  "email": "solarwave@example.com",
+  "phone": "+0987654322",
+  "category": "Energía Renovable",
+  "impactLevel": "ALTO",
+  "yearsOfExperience": 7,
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c2927b815ca47db30f727a"
+  },
+  "name": "SmartLearn",
+  "email": "smartlearn@example.com",
+  "phone": "+1122334456",
+  "category": "Educación",
+  "impactLevel": "BAJO",
+  "yearsOfExperience": 1,
+  "status": true
+},
+{
+  "_id": {
+    "$oid": "67c29284815ca47db30f727e"
+  },
+  "name": "HealthCarePlus",
+  "email": "healthcareplus@example.com",
+  "phone": "+5566778900",
+  "category": "Salud",
+  "impactLevel": "MEDIO",
+  "yearsOfExperience": 6,
+  "status": true
+}]
