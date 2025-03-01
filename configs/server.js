@@ -4,17 +4,20 @@ import express from "express"
 import cors from "cors"
 import helmet from "helmet"
 import morgan from "morgan"
+import multer from "multer";
 import { dbConnection } from "./mongo.js"
 import apiLimiter from "../src/middlewares/rate-limit-validator.js"
-import userRoutes from "../src/user/user.routes.js"
 import authRoutes from "../src/auth/auth.routes.js"
 import AddUserAdmin from "../src/auth/auth.controller.js"
+import companieRoutes from "../src/companie/companie.routes.js"
 import { swaggerDocs, swaggerUi } from "./swagger.js"
 
+const upload = multer()
 
 const middlewares = (app) => {
     app.use(express.urlencoded({extended: false}))
     app.use(express.json())
+    app.use(upload.none())
     app.use(cors({
         origin: '*',
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
@@ -36,8 +39,8 @@ const middlewares = (app) => {
     }
 
 const routes = (app) =>{
-    app.use("/gestionOpinion/v1/auth", authRoutes)
-    app.use("/gestionOpinion/v1/user", userRoutes)
+    app.use("/gestionCoperex/v1/auth", authRoutes)
+    app.use("/gestionCoperex/v1/companie", companieRoutes)
     app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
 }

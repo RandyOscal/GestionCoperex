@@ -1,16 +1,15 @@
-import { body, param } from "express-validator";
-import { emailExists, userExists } from "../helpers/db-validator.js";
+import { body } from "express-validator";
+import { emailExists, roleBlock } from "../helpers/db-validator.js";
 import { validarCampos } from "./validate-fileds.js";
 import { handleErrors } from "./handle-errors.js";
-import { hasRoles } from "./validate-roles.js"
 
 export const registerValidator = [
-    hasRoles("ADMIN_ROLE"),
     body("name").notEmpty().withMessage("El nombre es requerido"),
     body("email").notEmpty().withMessage("El email es requerido"),
     body("phone").notEmpty().withMessage("El telefono es requerido"),
     body("email").isEmail().withMessage("No es un email válido"),
     body("email").custom(emailExists),
+    body("role").optional().custom(roleBlock),
     body("password").isStrongPassword({
         minLength: 8,
         minLowercase:1,
